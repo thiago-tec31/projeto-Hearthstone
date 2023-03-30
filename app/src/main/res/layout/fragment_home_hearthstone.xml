@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".HomeHearthstoneActivity">
+    tools:context=".presentation.main.HearthstoneActivity">
 
     <ScrollView
         android:id="@+id/home_hearthstone_scrollview"
@@ -29,7 +29,7 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:text="@string/app_name"/>
-            
+
             <View
                 android:id="@+id/home_hearthstone_divisor"
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_below="@+id/home_hearthstone_title" />
 
 
-            <com.example.projecthearthstone.MyCardHearthstone
+            <com.example.projecthearthstone.core.components.MyCardHearthstone
                 android:id="@+id/home_hearthstone_layout_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <com.example.projecthearthstone.MyCardHearthstone
+            <com.example.projecthearthstone.core.components.MyCardHearthstone
                 android:id="@+id/home_hearthstone_layout_types"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <com.example.projecthearthstone.MyCardHearthstone
+            <com.example.projecthearthstone.core.components.MyCardHearthstone
                 android:id="@+id/home_hearthstone_layout_races"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

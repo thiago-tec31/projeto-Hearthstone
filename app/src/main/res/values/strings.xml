@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Hearthstone</string>
+    <string name="title_home">Home</string>
+    <string name="title_insider">Insider</string>
     <string name="class_name">Classes</string>
     <string name="types">Types</string>
     <string name="races">Races</string>

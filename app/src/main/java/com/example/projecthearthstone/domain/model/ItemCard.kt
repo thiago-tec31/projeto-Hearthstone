@@ -1,4 +1,4 @@
-package com.example.projecthearthstone
+package com.example.projecthearthstone.domain.model
 
 data class ItemCard(
     val title: CardType,

@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/activity_hearthstone.xml" value="0.4028103044496487" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/activity_main.xml" value="0.29577464788732394" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_hearthstone.xml" value="0.8575" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_home_hearthstone.xml" value="0.86" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_inseder_hearthstone.xml" value="0.6423220973782772" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_insider_hearthstone.xml" value="0.86" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/layout_item_card.xml" value="0.75" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/layout_my_card_hearthstone.xml" value="0.6130952380952381" />
       </map>

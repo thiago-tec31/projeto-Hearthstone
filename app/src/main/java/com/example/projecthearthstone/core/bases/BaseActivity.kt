@@ -1,4 +1,4 @@
-package com.example.projecthearthstone
+package com.example.projecthearthstone.core.bases
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
