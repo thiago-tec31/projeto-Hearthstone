@@ -1,0 +1,29 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/home_hearthstone_name"
+        android:layout_width="wrap_content"
+        android:textSize="16sp"
+        android:letterSpacing="-0.03"
+        android:textColor="@color/text_header_card_color"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:text="@string/class_name"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_hearthstone_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        tools:itemCount="1"
+        tools:listitem="@layout/layout_item_card">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

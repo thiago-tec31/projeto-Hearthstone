@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hearthstone</string>
+    <string name="class_name">Classes</string>
+    <string name="types">Types</string>
+    <string name="races">Races</string>
+    <string name="druid_class">Druid</string>
+</resources>
