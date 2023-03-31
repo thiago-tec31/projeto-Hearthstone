@@ -6,6 +6,8 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.projecthearthstone.R
 import com.example.projecthearthstone.core.bases.BaseFragment
+import com.example.projecthearthstone.core.util.hide
+import com.example.projecthearthstone.core.util.show
 import com.example.projecthearthstone.databinding.FragmentHomeHearthstoneBinding
 import com.example.projecthearthstone.domain.model.CardType
 import com.example.projecthearthstone.domain.model.ItemCard
@@ -17,16 +19,54 @@ class HomeHearthstoneFragment: BaseFragment<FragmentHomeHearthstoneBinding>(Frag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showLoading()
         setObservers()
+        loadInfoCards()
+    }
+
+    private fun loadInfoCards() {
         homeHearthstoneViewModel.getInfoCards()
     }
 
+    private fun showLoading() {
+        binding.homeHearthstoneLayoutAnimation.show()
+        binding.homeHearthstoneLottieAnimation.playAnimation()
+        binding.homeHearthstoneLayoutError.hide()
+        binding.homeHearthstoneScrollview.hide()
+    }
+
     private fun setObservers() {
-        homeHearthstoneViewModel.cards.observe(requireActivity()) {
+        homeHearthstoneViewModel.cards.observe(viewLifecycleOwner) {
             configureLayoutClass(it.classes)
             configureLayoutTypes(it.types)
             configureLayoutRaces(it.races)
+            hideLoading()
         }
+
+        homeHearthstoneViewModel.apiError.observe(viewLifecycleOwner) {
+            showError()
+            setTextError(it.status.type, it.message)
+        }
+
+    }
+
+    private fun setTextError(titleError: String, subTitleError: String){
+        binding.homeHearthstoneTitleErrorText.text = titleError
+        binding.homeHearthstoneSubtitleErrorText.text = subTitleError
+    }
+
+    private fun hideLoading() {
+        binding.homeHearthstoneLayoutAnimation.hide()
+        binding.homeHearthstoneLottieAnimation.pauseAnimation()
+        binding.homeHearthstoneLayoutError.hide()
+        binding.homeHearthstoneScrollview.show()
+    }
+
+    private fun showError() {
+        binding.homeHearthstoneLayoutAnimation.hide()
+        binding.homeHearthstoneLottieAnimation.pauseAnimation()
+        binding.homeHearthstoneLayoutError.show()
+        binding.homeHearthstoneScrollview.hide()
     }
 
     private fun configureLayoutClass(classes: ArrayList<String>) {

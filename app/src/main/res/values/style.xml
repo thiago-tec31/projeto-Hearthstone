@@ -23,6 +23,14 @@
         <item name="fontFamily">@font/avenir</item>
     </style>
 
+    <style name="avenir_title_error" parent="avenir_title_insider_hearthstone">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="avenir_subtitle_error" parent="avenir_title_card_hearthstone">
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="avenir_title_insider_hearthstone">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/text_title_color</item>

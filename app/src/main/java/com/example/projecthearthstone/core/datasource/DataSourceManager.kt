@@ -2,12 +2,14 @@ package com.example.projecthearthstone.core.datasource
 
 import com.example.projecthearthstone.BuildConfig
 import com.google.gson.GsonBuilder
+import com.localebro.okhttpprofiler.OkHttpProfilerInterceptor
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class DataSourceManager: DataSource {
 
@@ -15,6 +17,8 @@ class DataSourceManager: DataSource {
     override val PARAM_HEADER_X_RAPID_API_KEY: String = "X-RapidAPI-Key"
 
     override val PARAM_HEADER_X_RAPID_API_HOST: String = "X-RapidAPI-Host"
+
+    override val API_TIMEOUT: Long = 60
 
     override fun <T> createService(
         url: HttpUrl,
@@ -30,6 +34,9 @@ class DataSourceManager: DataSource {
         addInterceptor(createGeneralInterceptor())
         addInterceptor(createHttpErrorInterceptor())
         addInterceptor(createLogInterceptor())
+        addInterceptor(OkHttpProfilerInterceptor())
+        readTimeout(API_TIMEOUT, TimeUnit.SECONDS)
+        connectTimeout(API_TIMEOUT, TimeUnit.SECONDS)
     }.build()
 
     private fun createGeneralInterceptor() = Interceptor { chain ->

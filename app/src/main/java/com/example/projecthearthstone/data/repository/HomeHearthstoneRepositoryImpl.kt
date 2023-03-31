@@ -37,7 +37,7 @@ class HomeHearthstoneRepositoryImpl(
         } catch (e: UnknownHostException) {
             Resource.Fail(ApiError.NO_CONNECTION, e.message ?: e.toString())
         } catch (e: SocketTimeoutException) {
-            Resource.Fail(ApiError.TIME_OUT, e.message ?: e.toString())
+            Resource.Fail(ApiError.TIMEOUT, e.message ?: e.toString())
         } catch (e: Exception) {
             Resource.Fail(ApiError.EXCEPTION, e.message ?: e.toString())
         }

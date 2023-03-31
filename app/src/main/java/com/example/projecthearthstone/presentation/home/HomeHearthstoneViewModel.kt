@@ -16,10 +16,17 @@ class HomeHearthstoneViewModel(
     private val _cards = MutableLiveData<InfoCards>()
     val cards: LiveData<InfoCards> = _cards
 
+    private val _apiError = MutableLiveData<Resource.Fail>()
+    val apiError: LiveData<Resource.Fail> = _apiError
+
     fun getInfoCards() {
         viewModelScope.launch {
-            val infoCards = (homeHearthstoneUseCase.getInfoCards() as Resource.Success).data
-            _cards.value = infoCards
+            val infoCards = homeHearthstoneUseCase.getInfoCards()
+            if (infoCards is Resource.Success) {
+                _cards.value = infoCards.data
+            } else {
+                _apiError.value = (infoCards as Resource.Fail)
+            }
         }
     }
 }
