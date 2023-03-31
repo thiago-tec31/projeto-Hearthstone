@@ -6,12 +6,18 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
 
-    protected lateinit var binding: VB
+    private var activityBinding: VB? = null
+    val binding get() = activityBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = getViewBinding()
+        activityBinding = getViewBinding()
     }
 
     abstract fun getViewBinding(): VB
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activityBinding = null
+    }
 }

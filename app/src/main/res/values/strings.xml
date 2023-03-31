@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Hearthstone</string>
+    <string name="to_go_back">Previous</string>
     <string name="title_home">Home</string>
     <string name="title_insider">Insider</string>
     <string name="class_name">Classes</string>

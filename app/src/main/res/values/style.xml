@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="avenir_title_hearthstone">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/text_title_color</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/avenir_bold</item>
+    </style>
+
+    <style name="avenir_name_card_hearthstone">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="fontFamily">@font/avenir</item>
+    </style>
+
+    <style name="avenir_title_card_hearthstone">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_header_card_color</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="fontFamily">@font/avenir</item>
+    </style>
+
+    <style name="avenir_title_insider_hearthstone">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/text_title_color</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="fontFamily">@font/avenir</item>
+    </style>
+    
+</resources>

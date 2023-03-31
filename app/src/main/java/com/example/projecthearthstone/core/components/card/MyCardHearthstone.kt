@@ -1,4 +1,4 @@
-package com.example.projecthearthstone.core.components
+package com.example.projecthearthstone.core.components.card
 
 import android.content.Context
 import android.util.AttributeSet

@@ -9,22 +9,29 @@ import com.example.projecthearthstone.core.bases.BaseFragment
 import com.example.projecthearthstone.databinding.FragmentHomeHearthstoneBinding
 import com.example.projecthearthstone.domain.model.CardType
 import com.example.projecthearthstone.domain.model.ItemCard
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeHearthstoneFragment: BaseFragment<FragmentHomeHearthstoneBinding>(FragmentHomeHearthstoneBinding::inflate) {
 
+    private val homeHearthstoneViewModel: HomeHearthstoneViewModel by viewModel()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        configureLayoutClass()
-        configureLayoutTypes()
-        configureLayoutRaces()
+        setObservers()
+        homeHearthstoneViewModel.getInfoCards()
     }
 
-    private fun configureLayoutClass() {
-        val itemCard = ItemCard(
-            CardType.CLASSES,
-            arrayListOf("Druid", "Hunter", "Mage")
-        )
+    private fun setObservers() {
+        homeHearthstoneViewModel.cards.observe(requireActivity()) {
+            configureLayoutClass(it.classes)
+            configureLayoutTypes(it.types)
+            configureLayoutRaces(it.races)
+        }
+    }
+
+    private fun configureLayoutClass(classes: ArrayList<String>) {
         binding.homeHearthstoneLayoutClass.also {
+            val itemCard = ItemCard(CardType.CLASSES, classes)
             it.setTextTitle(getString(R.string.class_name))
             it.updateCards(itemCard)
             it.setOnClickCardListener {
@@ -33,26 +40,18 @@ class HomeHearthstoneFragment: BaseFragment<FragmentHomeHearthstoneBinding>(Frag
         }
     }
 
-    private fun configureLayoutTypes() {
+    private fun configureLayoutTypes(types: ArrayList<String>) {
         binding.homeHearthstoneLayoutTypes.also {
-            val itemCard = ItemCard(
-                CardType.TYPES,
-                arrayListOf("Druid", "Hunter", "Mage")
-            )
+            val itemCard = ItemCard(CardType.TYPES, types)
             it.setTextTitle(getString(R.string.types))
             it.updateCards(itemCard)
-            it.setOnClickCardListener {
-                findNavController().navigate(R.id.action_HomeHearthstoneFragment_to_InsiderHearthstoneFragment)
-            }
+            it.setOnClickCardListener { findNavController().navigate(R.id.action_HomeHearthstoneFragment_to_InsiderHearthstoneFragment) }
         }
     }
 
-    private fun configureLayoutRaces() {
+    private fun configureLayoutRaces(races: ArrayList<String>) {
         binding.homeHearthstoneLayoutRaces.also {
-            val itemCard = ItemCard(
-                CardType.RACES,
-                arrayListOf("Druid", "Hunter", "Mage")
-            )
+            val itemCard = ItemCard(CardType.RACES, races)
             it.setTextTitle(getString(R.string.races))
             it.updateCards(itemCard)
             it.setOnClickCardListener {

@@ -1,4 +1,4 @@
-package com.example.projecthearthstone.core.components
+package com.example.projecthearthstone.core.components.card
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -73,6 +73,7 @@ class MyCardAdapter(
         this.cardType = cards.title
         this.cardsList.clear()
         this.cardsList.addAll(cards.names)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = cardsList.size

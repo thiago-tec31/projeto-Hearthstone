@@ -28,12 +28,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="17dp"
                 android:layout_marginStart="23dp"
+                android:text="@string/druid_class"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:textSize="18sp"
-                android:letterSpacing="-0.03"
-                android:textColor="@color/white"
-                android:text="@string/druid_class" />
+                style="@style/avenir_name_card_hearthstone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

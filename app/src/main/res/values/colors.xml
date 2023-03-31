@@ -21,6 +21,7 @@
 
     <!-- Home Hearthstone Activity -->
     <color name="text_title_color">#202032</color>
+    <color name="float_button_color">#202032</color>
     <color name="text_header_card_color">#707070</color>
     <color name="background_color">#F8F8F8</color>
 

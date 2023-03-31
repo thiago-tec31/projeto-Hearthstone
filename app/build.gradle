@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.dsl.BaseFlavor
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -6,13 +8,13 @@ plugins {
 android {
     compileSdk 33
 
-    defaultConfig {
+    defaultConfig { flavor ->
         applicationId "com.example.projecthearthstone"
         minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        setupProductConfig(flavor)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,13 +40,42 @@ android {
 
 dependencies {
 
+    // layouts
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
     testImplementation 'junit:junit:4.13.2'
+
+    //Koin
+    implementation 'io.insert-koin:koin-android:3.1.2'
+
+    //retrofit, gson e Okhttp
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+    //Test unit
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+
+static void setupProductConfig(BaseFlavor flavor) {
+    def TYPE_STRING = "String"
+    def BASE_URL = "BASE_URL"
+    def X_RAPID_API_KEY = "X_RAPID_API_KEY"
+    def X_RAPID_API_HOST = "X_RAPID_API_HOST"
+
+    flavor.buildConfigField(TYPE_STRING, BASE_URL, "\"https://omgvamp-hearthstone-v1.p.rapidapi.com\"")
+    flavor.buildConfigField(TYPE_STRING, X_RAPID_API_KEY, "\"0b4e56e297msha1a862d46cf26ecp1ee734jsn5d2c5db3cae1\"")
+    flavor.buildConfigField(TYPE_STRING, X_RAPID_API_HOST, "\"omgvamp-hearthstone-v1.p.rapidapi.com\"")
+}
+
