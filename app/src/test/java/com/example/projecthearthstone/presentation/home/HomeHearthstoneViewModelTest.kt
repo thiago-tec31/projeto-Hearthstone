@@ -5,6 +5,10 @@ import com.example.projecthearthstone.core.model.ApiError
 import com.example.projecthearthstone.core.model.Resource
 import com.example.projecthearthstone.domain.model.InfoCards
 import com.example.projecthearthstone.domain.usecase.HomeHearthstoneUseCase
+import com.example.projecthearthstone.presentation.Constants.classMage
+import com.example.projecthearthstone.presentation.Constants.noConnection
+import com.example.projecthearthstone.presentation.Constants.raceOrc
+import com.example.projecthearthstone.presentation.Constants.typeDruid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
@@ -32,12 +36,14 @@ class HomeHearthstoneViewModelTest {
 
     private lateinit var homeHearthstoneViewModel: HomeHearthstoneViewModel
 
+
     @Before
     fun setUp() {
         homeHearthstoneViewModel = HomeHearthstoneViewModel(
             homeHearthstoneUseCase
         )
     }
+
 
     @Test
     fun testGetInfoCardsReturnFail() = runTest {
@@ -53,8 +59,8 @@ class HomeHearthstoneViewModelTest {
 
             // Assert
             Mockito.verify(homeHearthstoneUseCase, times(1)).getInfoCards()
-            homeHearthstoneViewModel.apiError.value.apply {
-                Assert.assertEquals("No connection", this?.message)
+            with(homeHearthstoneViewModel.apiError.value) {
+                Assert.assertEquals(noConnection, this?.message)
                 Assert.assertEquals(ApiError.TIMEOUT, this?.status)
             }
 
@@ -78,9 +84,9 @@ class HomeHearthstoneViewModelTest {
             // Assert
             Mockito.verify(homeHearthstoneUseCase, times(1)).getInfoCards()
             homeHearthstoneViewModel.cards.value.apply {
-                Assert.assertEquals("Mago", this?.classes?.get(0))
-                Assert.assertEquals("Druid", this?.types?.get(0))
-                Assert.assertEquals("Orc", this?.races?.get(0))
+                Assert.assertEquals(classMage, this?.classes?.get(0))
+                Assert.assertEquals(typeDruid, this?.types?.get(0))
+                Assert.assertEquals(raceOrc, this?.races?.get(0))
             }
 
         } finally {
@@ -88,10 +94,14 @@ class HomeHearthstoneViewModelTest {
         }
     }
 
-    private fun mockResourceWithFail() =
-        Resource.Fail(ApiError.TIMEOUT, "No connection")
+    private fun mockResourceWithFail() = Resource.Fail(ApiError.TIMEOUT, noConnection)
 
-    private fun mockResourceWithSuccess() =
-        Resource.Success(InfoCards(arrayListOf("Mago"), arrayListOf("Druid"), arrayListOf("Orc")))
+    private fun mockResourceWithSuccess() = Resource.Success(
+        InfoCards(
+            arrayListOf(classMage),
+            arrayListOf(typeDruid),
+            arrayListOf(raceOrc)
+        )
+    )
 
 }

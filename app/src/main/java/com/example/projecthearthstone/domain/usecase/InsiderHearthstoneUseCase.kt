@@ -10,7 +10,7 @@ interface InsiderHearthstoneUseCase {
     suspend fun getFiguresAll(filter: CardType?, cardName: String?): Resource<List<FigureCards>>
 }
 
-class InsiderHearthstoneUseImpl(
+class InsiderHearthstoneUseCaseImpl(
     private val insiderHearthstoneRepository: InsiderHearthstoneRepository
 ): InsiderHearthstoneUseCase {
 

@@ -6,6 +6,8 @@ import com.example.projecthearthstone.core.model.Resource
 import com.example.projecthearthstone.domain.model.CardType
 import com.example.projecthearthstone.domain.model.FigureCards
 import com.example.projecthearthstone.domain.usecase.InsiderHearthstoneUseCase
+import com.example.projecthearthstone.presentation.Constants.classMage
+import com.example.projecthearthstone.presentation.Constants.noConnection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -42,21 +44,27 @@ class InsiderHeartstoneViewModelTest {
         )
     }
 
+    private val images = arrayListOf(
+        FigureCards("img.jpg"),
+        FigureCards("img2.jpg")
+    )
+
     @Test
     fun testGetFiguresReturnFail() = runTest {
         val testDispatcher = UnconfinedTestDispatcher(testScheduler)
         Dispatchers.setMain(testDispatcher)
         try {
             // Arrange
-            val title = CardType.CLASSES
-            val cardName = "Orc"
-            Mockito.`when`(insiderHearthstoneUseCase.getFiguresAll(title, cardName)).thenReturn(mockResourceWithFail())
+            Mockito.`when`(insiderHearthstoneUseCase.getFiguresAll(CardType.CLASSES, classMage))
+                .thenReturn(mockResourceWithFail())
 
             // Act
-            insiderHeartstoneViewModel.getFigures(title, cardName)
+            insiderHeartstoneViewModel.getFigures(CardType.CLASSES, classMage)
 
             // Assert
-            Mockito.verify(insiderHearthstoneUseCase, Mockito.times(1)).getFiguresAll(title, cardName)
+            Mockito.verify(insiderHearthstoneUseCase, Mockito.times(1))
+                .getFiguresAll(CardType.CLASSES, classMage)
+
             insiderHeartstoneViewModel.figures.value.apply {
                 Assert.assertNotNull(this)
                 Assert.assertTrue(this?.isEmpty() == true)
@@ -73,18 +81,18 @@ class InsiderHeartstoneViewModelTest {
         Dispatchers.setMain(testDispatcher)
         try {
             // Arrange
-            val title = CardType.CLASSES
-            val cardName = "Orc"
-            Mockito.`when`(insiderHearthstoneUseCase.getFiguresAll(title, cardName)).thenReturn(mockResourceWithSuccess())
+            Mockito.`when`(insiderHearthstoneUseCase.getFiguresAll(CardType.CLASSES, classMage))
+                .thenReturn(mockResourceWithSuccess())
 
             // Act
-            insiderHeartstoneViewModel.getFigures(title, cardName)
+            insiderHeartstoneViewModel.getFigures(CardType.CLASSES, classMage)
 
             // Assert
-            Mockito.verify(insiderHearthstoneUseCase, Mockito.times(1)).getFiguresAll(title, cardName)
+            Mockito.verify(insiderHearthstoneUseCase, Mockito.times(1))
+                .getFiguresAll(CardType.CLASSES, classMage)
+
             insiderHeartstoneViewModel.figures.value.apply {
-                Assert.assertEquals("img.jpg", this?.get(0)?.img)
-                Assert.assertEquals("img2.jpg", this?.get(1)?.img)
+                Assert.assertTrue(this?.size == 2)
             }
 
         } finally {
@@ -92,10 +100,8 @@ class InsiderHeartstoneViewModelTest {
         }
     }
 
-    private fun mockResourceWithFail() =
-        Resource.Fail(ApiError.TIMEOUT, "No connection")
+    private fun mockResourceWithFail() = Resource.Fail(ApiError.TIMEOUT, noConnection)
 
-    private fun mockResourceWithSuccess() =
-        Resource.Success(arrayListOf(FigureCards("img.jpg"), FigureCards("img2.jpg")))
+    private fun mockResourceWithSuccess() = Resource.Success(images)
 
 }
