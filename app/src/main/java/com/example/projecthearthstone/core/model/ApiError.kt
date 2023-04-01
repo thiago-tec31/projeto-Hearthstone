@@ -4,5 +4,5 @@ enum class ApiError(val type: String) {
     TIMEOUT("Timeout"),
     FAIL("Fail"),
     EXCEPTION("Exception"),
-    NO_CONNECTION("No connection")
+    NO_CONNECTION("No connection"),
 }

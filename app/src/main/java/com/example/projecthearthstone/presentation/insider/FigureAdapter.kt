@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projecthearthstone.R
 import com.example.projecthearthstone.databinding.LayoutImageCardBinding
+import com.example.projecthearthstone.domain.model.FigureCards
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception
@@ -19,7 +20,7 @@ class FigureAdapter(
 
     inner class FigureViewHolder(var viewBinding: LayoutImageCardBinding): RecyclerView.ViewHolder(viewBinding.root)
 
-    private var figures = mutableListOf<String>()
+    private var figures = mutableListOf<FigureCards>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FigureViewHolder {
         val view = LayoutImageCardBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -27,27 +28,22 @@ class FigureAdapter(
     }
 
     override fun onBindViewHolder(holder: FigureViewHolder, position: Int) {
-        val url = figures[position]
-        loadFigure(holder.viewBinding.itemImageFigure, url)
+        val image = holder.viewBinding.itemImageFigure
+        val url = figures[position].img
+        loadFigure(image, url)
     }
 
-    fun updatesFigures(figures: List<String>) {
+    fun updatesFigures(figures: List<FigureCards>) {
         this.figures.clear()
         this.figures.addAll(figures)
+        notifyDataSetChanged()
     }
 
     private fun loadFigure(imageView: ImageView, url: String) {
         Picasso.get()
             .load(url)
-            .placeholder(R.drawable.figure_hearthstone)
-            .into(imageView, object : Callback {
-                override fun onSuccess() {
-                    Log.e("sucesso", "funcionou")
-                }
-                override fun onError(e: Exception?) {
-                    Log.e("erro", "deu merda " + e?.message)
-                }
-            })
+            .placeholder(R.drawable.animation)
+            .into(imageView)
     }
 
     override fun getItemCount(): Int = figures.size

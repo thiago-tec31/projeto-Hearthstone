@@ -27,6 +27,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="avenir_no_data" parent="avenir_title_hearthstone" />
+
     <style name="avenir_subtitle_error" parent="avenir_title_card_hearthstone">
         <item name="android:gravity">center</item>
     </style>

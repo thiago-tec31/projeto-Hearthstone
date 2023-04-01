@@ -1,10 +1,10 @@
 package com.example.projecthearthstone.core.di
 
-import com.example.projecthearthstone.core.datasource.DataSourceManager
+import com.example.projecthearthstone.core.interceptor.HttpInterceptorImpl
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import javax.sql.DataSource
 
 val serviceModule = module {
-    single { DataSourceManager() } bind DataSource::class
+    single { HttpInterceptorImpl() } bind DataSource::class
 }

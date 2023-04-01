@@ -1,4 +1,4 @@
-package com.example.projecthearthstone.core.datasource
+package com.example.projecthearthstone.core.interceptor
 
 import com.example.projecthearthstone.BuildConfig
 import com.google.gson.GsonBuilder
@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class DataSourceManager: DataSource {
+class HttpInterceptorImpl: HttpInterceptor {
 
 
     override val PARAM_HEADER_X_RAPID_API_KEY: String = "X-RapidAPI-Key"

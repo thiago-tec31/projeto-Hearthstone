@@ -1,6 +1,6 @@
 package com.example.projecthearthstone.data.mapper
 
-import com.example.projecthearthstone.data.model.request.InfoCardsResponse
+import com.example.projecthearthstone.data.model.response.InfoCardsResponse
 import com.example.projecthearthstone.domain.model.InfoCards
 
 open class InfoCardsMapper {

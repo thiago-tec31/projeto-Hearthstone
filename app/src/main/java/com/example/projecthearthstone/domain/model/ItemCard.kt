@@ -5,8 +5,10 @@ data class ItemCard(
     val names: List<String>
 )
 
-enum class CardType {
-    CLASSES, TYPES, RACES
+enum class CardType(val type: String) {
+    CLASSES("Classes"),
+    TYPES("Types"),
+    RACES("Races")
 }
 
 

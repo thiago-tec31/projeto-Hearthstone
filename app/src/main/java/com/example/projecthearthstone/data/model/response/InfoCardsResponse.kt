@@ -1,4 +1,4 @@
-package com.example.projecthearthstone.data.model.request
+package com.example.projecthearthstone.data.model.response
 
 data class InfoCardsResponse(
     val classes: ArrayList<String>? = arrayListOf(),

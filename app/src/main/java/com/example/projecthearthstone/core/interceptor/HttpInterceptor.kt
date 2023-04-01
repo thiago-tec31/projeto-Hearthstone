@@ -1,8 +1,8 @@
-package com.example.projecthearthstone.core.datasource
+package com.example.projecthearthstone.core.interceptor
 
 import okhttp3.HttpUrl
 
-interface DataSource {
+interface HttpInterceptor {
 
     val PARAM_HEADER_X_RAPID_API_KEY: String
     val PARAM_HEADER_X_RAPID_API_HOST: String

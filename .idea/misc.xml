@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.169" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1915" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.169" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/drawable/layout_circle_background.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/drawable/layout_rounded_circle.xml" value="0.169" />
@@ -12,7 +13,8 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_hearthstone.xml" value="0.8575" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_home_hearthstone.xml" value="0.5" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_inseder_hearthstone.xml" value="0.6423220973782772" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_insider_hearthstone.xml" value="0.75" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/fragment_insider_hearthstone.xml" value="0.5333333333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/layout_empty.xml" value="0.4375" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/layout_floating_button.xml" value="0.86" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/layout_floatting_button.xml" value="0.75" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/projectHearthstone/app/src/main/res/layout/layout_image_card.xml" value="0.8575" />
